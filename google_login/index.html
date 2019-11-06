@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta name="google-signin-client_id" content="652169929275-4rpkherjmcm0fjr47gnauel33l6g0u59.apps.googleusercontent.com">
+  <script src="https://apis.google.com/js/platform.js" async defer></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <title>Google Account Login</title>
+</head>
+<style>
+
+</style>
+<body>
+  <h1>Welcome to Google OAuth 2.0 Login demo</h1>
+  <div class="g-signin2" data-onsuccess="onSignIn"></div></br>
+  <a href="#" onclick="signOut();">Sign out</a></br>
+  <input type ="button" onclick="googleLogin();" value="自訂Google登入"></input>
+</body>
+<script>
+  
+  // g-signin2 > data-onsuccess 的呼叫函式
+  function onSignIn(googleUser) {
+    var profile = googleUser.getBasicProfile();
+    console.log('ID: ' + profile.getId()); // Do not send to your backend! Use an ID token instead.
+    console.log('Name: ' + profile.getName());
+    console.log('Image URL: ' + profile.getImageUrl());
+    console.log('Email: ' + profile.getEmail()); // This is null if the 'email' scope is not present.
+
+    // The ID Token you need to pass to your backend server
+    var id_token = googleUser.getAuthResponse().id_token;
+    console.log("ID Token: " + id_token);
+  }
+
+  // Sign out 登出
+  function signOut() {
+    var auth2 = gapi.auth2.getAuthInstance();
+    auth2.signOut().then(function () {
+      console.log('Google帳號登出');
+    });
+  }
+
+  // 自訂Google登入
+  function googleLogin(){
+    // gapi.auth2.init();
+    var auth2 = gapi.auth2.getAuthInstance();
+    auth2.signIn().then((data)=>{
+      console.log("登入...");
+      // onSignIn(googleUser);
+      console.log(data);
+      console.log(data.Zi)
+      var id_token = data.Zi.id_token;
+      $.ajax(
+        {
+          url: "https://oauth2.googleapis.com/tokeninfo?id_token=" + id_token
+        }
+      ).then((info)=>{
+        console.log(info);
+        console.log(info.name , info.email);
+      })
+    })
+  }
+
+</script>
+</html>
