@@ -1,0 +1,98 @@
+# JavaScript Facebook Login
+###### tags: `JavaScript` `Facebook OAuth`
+
+現在網站提供給客戶的註冊、登入必須提供 Facebook 第三方登入，目前這方面的主流是 Oauth 2.0 授權、認證機制。
+
+### Facebook Sign-in for WWW
+Facebook 提供一個系統登入的方法，讓前端工程師整合到網頁去。
+[搭配 JavaScript SDK 的網頁版「Facebook 登入」](https://developers.facebook.com/docs/facebook-login/web?locale=zh_TW)
+[關於OAuth 2.0-以Facebook為例](https://medium.com/@justinlee_78563/%E9%97%9C%E6%96%BCoauth-2-0-%E4%BB%A5facebook%E7%82%BA%E4%BE%8B-6f78a4a55f52)
+
+步驟如下：
+```htmlmixed=
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Facebook Account Login</title>
+</head>
+<style>
+
+</style>
+<body>
+  <h1>Welcome to Facebook OAuth 2.0 Login demo</h1>
+  
+  <fb:login-button scope="public_profile,email" autologoutlink="true" onlogin="checkLoginState();"></fb:login-button>
+
+目前狀態：<span id="FB_STATUS_1"></span>
+
+<script>
+window.fbAsyncInit = function() {
+  FB.init({
+    appId: '1247542705453879', // 填入 FB APP ID
+    cookie: true,
+    xfbml: true,
+    version: 'v3.1'
+  });
+
+  FB.getLoginStatus(function(response) {
+    statusChangeCallback(response);
+  });
+};
+
+// 處理各種登入身份
+function statusChangeCallback(response) {
+  console.log(response);
+  var target = document.getElementById("FB_STATUS_1"),
+  html = "";
+
+  // 登入 FB 且已加入會員
+  if (response.status === 'connected') {
+    html = "已登入 FB，並加入 WFU BLOG DEMO 應用程式<br/>";
+
+    FB.api('/me?fields=id,name,email', function(response) {
+      console.log(response);
+      html += "會員暱稱：" + response.name + "<br/>";
+      html += "會員 email：" + response.email;
+      target.innerHTML = html;
+    });
+  }
+
+  // 登入 FB, 未偵測到加入會員
+  else if (response.status === "not_authorized") {
+    target.innerHTML = "已登入 FB，但未加入 WFU BLOG DEMO 應用程式";
+  }
+
+  // 未登入 FB
+  else {
+    target.innerHTML = "未登入 FB";
+  }
+}
+
+function checkLoginState() {
+  FB.getLoginStatus(function(response) {
+    statusChangeCallback(response);
+  });
+}
+
+// 載入 FB SDK
+(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s);
+  js.id = id;
+  js.src = "https://connect.facebook.net/zh_TW/sdk.js";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));
+</script>
+
+</html>
+```
+
+davidtpe@seed.net.tw 針對本傳案的測試 資訊
+應用程式編號 : 1247542705453879
+應用程式密鑰 : 14c7a223e3450c7c4deee04f6c98f37d
+應用程式網域 : http://localhost:5500
+
