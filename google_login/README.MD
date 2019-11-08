@@ -80,6 +80,6 @@ Google提供一個系統登入的方法，讓前端工程師整合到網頁去�
 
 
 davidtpe99@gmail.com 針對本傳案的測試 Client ID 資訊
-client ID : 652169929275-4rpkherjmcm0fjr47gnauel33l6g0u59.apps.googleusercontent.com
-client secret : cAWlD6m_BU_fZzoBnfhyuZcZ
+1. client ID : 652169929275-4rpkherjmcm0fjr47gnauel33l6g0u59.apps.googleusercontent.com
+2. client secret : cAWlD6m_BU_fZzoBnfhyuZcZ
 
