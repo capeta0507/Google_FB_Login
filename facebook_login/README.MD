@@ -5,8 +5,9 @@
 
 ### Facebook Sign-in for WWW
 Facebook 提供一個系統登入的方法，讓前端工程師整合到網頁去。
-[搭配 JavaScript SDK 的網頁版「Facebook 登入」](https://developers.facebook.com/docs/facebook-login/web?locale=zh_TW)
-[關於OAuth 2.0-以Facebook為例](https://medium.com/@justinlee_78563/%E9%97%9C%E6%96%BCoauth-2-0-%E4%BB%A5facebook%E7%82%BA%E4%BE%8B-6f78a4a55f52)
+1. [搭配 JavaScript SDK 的網頁版「Facebook 登入」](https://developers.facebook.com/docs/facebook-login/web?locale=zh_TW)
+2. [關於OAuth 2.0-以Facebook為例](https://medium.com/@justinlee_78563/%E9%97%9C%E6%96%BCoauth-2-0-%E4%BB%A5facebook%E7%82%BA%E4%BE%8B-6f78a4a55f52)
+2. [使用 FB API 處理登入登出功能](https://www.wfublog.com/2018/12/fb-api-log-in-out-button-example.html)
 
 步驟如下：
 ```htmlmixed=
@@ -92,7 +93,7 @@ function checkLoginState() {
 ```
 
 davidtpe@seed.net.tw 針對本傳案的測試 資訊
-應用程式編號 : 1247542705453879
-應用程式密鑰 : 14c7a223e3450c7c4deee04f6c98f37d
-應用程式網域 : http://localhost:5500
+1. 應用程式編號 : 1247542705453879
+2. 應用程式密鑰 : 14c7a223e3450c7c4deee04f6c98f37d
+3. 應用程式網域 : http://localhost:5500
 

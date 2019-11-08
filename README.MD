@@ -8,6 +8,6 @@
 1. [百科](https://zh.wikipedia.org/wiki/%E5%BC%80%E6%94%BE%E6%8E%88%E6%9D%83)
 2. [OAuth 2.0：簡介](https://lepture.com/zh/2018/oauth2-intro)
 
-### 範例連結
+### 範例連結(Github)
 1. [Google Login](https://github.com/capeta0507/Google_FB_Login/tree/master/google_login)
-2. [Facebook Login](https://medium.com/@justinlee_78563/%E9%97%9C%E6%96%BCoauth-2-0-%E4%BB%A5facebook%E7%82%BA%E4%BE%8B-6f78a4a55f52)
+2. [Facebook Login](https://github.com/capeta0507/Google_FB_Login/tree/master/facebook_login)
