@@ -97,3 +97,14 @@ davidtpe@seed.net.tw 針對本傳案的測試 資訊
 2. 應用程式密鑰 : 14c7a223e3450c7c4deee04f6c98f37d
 3. 應用程式網域 : http://localhost:5500
 
+------
+
+### 另一種方法
+參考文件：https://medium.com/@justinlee_78563/%E9%97%9C%E6%96%BCoauth-2-0-%E4%BB%A5facebook%E7%82%BA%E4%BE%8B-6f78a4a55f52
+
+```bash
+https://www.facebook.com/v2.10/dialog/oauth?client_id=1247542705453879&redirect_uri=http://localhost:5500/fb.html
+
+https://graph.facebook.com/v2.10/oauth/access_token?client_id=1247542705453879&redirect_uri=http://localhost:5500/fb.html&client_secret=14c7a223e3450c7c4deee04f6c98f37d&code=AQAcwvNjk2YU2WGloDlpkNlwBSm__YffxMvknyMSkZ3O7JR4ZnvaRceYCCX0oZWaIfAou92yYHAp49Tn5EsFZ3OV4YWhS87r26T1lgJWN-u9FHJa35ibsMJzuHVe1UT6nqzLvneXP-rWrgZxN7wV86CZ16vvkso_jxcVqru44pJZwRkBi9FnnycF1F3tgO9NWt5Y7Vf7bTfQvnZ5ezRuJq9dUZ-sDCI68eGvCivkKd2wr0x7VL0As05nNOtOOvNsQQF1y0EsdLukL5hGC43eW9c80lf0eVNdLkN84S_NCIjM-LgXEPfMRuazCn9sobVJFlwrGjtyVbyNJz_c1Qzqj6jt#_
+
+```

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <title>FB Token</title>
+</head>
+<body>
+    <h1>FB Redirect URI</h1>
+</body>
+<script>
+    var xurl = window.location.href
+    console.log(xurl);
+    var data = xurl.split("?");
+    console.log(data[1]);
+    var data2 = data[1].split("=");
+    var xToken = data2[1];
+    console.log(xToken);
+
+    // jQuery GET 
+    // $.get({
+    //     url:""
+    // })
+    newURL = `https://graph.facebook.com/v2.10/oauth/access_token?client_id=1247542705453879&redirect_uri=http://localhost:5500/fb.html&client_secret=14c7a223e3450c7c4deee04f6c98f37d&code=${xToken}`
+    // console.log(newURL);
+    // window.location.href = newURL;
+    $.get(
+        newURL,
+        (data)=>{
+            console.log('data : ',data)
+        }
+    )
+
+</script>
+</html>
