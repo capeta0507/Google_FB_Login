@@ -14,7 +14,14 @@
   
   <fb:login-button scope="public_profile,email" autologoutlink="true" onlogin="checkLoginState();"></fb:login-button>
 
-目前狀態：<span id="FB_STATUS_1"></span>
+  <br>
+  <br>
+  <input type ="button" onclick="fbLogin();" value="自訂Facebook登入"></input>
+
+  <br>
+  <br>
+  
+  目前狀態：<span id="FB_STATUS_1"></span>
 
 <script>
 window.fbAsyncInit = function() {
@@ -74,6 +81,21 @@ function checkLoginState() {
   js.src = "https://connect.facebook.net/zh_TW/sdk.js";
   fjs.parentNode.insertBefore(js, fjs);
 }(document, 'script', 'facebook-jssdk'));
+
+function fbLogin(){
+
+  FB.login(function(response) {
+    if (response.authResponse) {
+    console.log('Welcome!  Fetching your information.... ');
+    FB.api('/me', function(response) {
+      console.log('Good to see you, ' + response.name + '.');
+    });
+    } else {
+    console.log('User cancelled login or did not fully authorize.');
+    }
+  });
+}
+
 </script>
 
 

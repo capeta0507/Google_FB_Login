@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://connect.facebook.net/en_US/sdk.js"></script>
+    
+    <title>FB Login</title>
+</head>
+<body>
+    <h1>Facebook手動登入</h1>
+    <input type ="button" onclick="fbLogin();" value="手動Facebook登入"></input>
+    </br>
+    <div id="FBStatus">
+        登入狀態:<span id="loginStatus">xxxx</span>
+        </br>
+        登入資訊:<span id="loginName">xxxx</span>
+    </div>
+    </br>   
+    <input type ="button" onclick="fbLogout();" value="Facebook登出"></input>
+</body>
+<script>
+    FB.init({
+      appId   : 1247542705453879,
+      status  : true,
+      xfbml   : true,
+      version : 'v3.1'
+    });
+    FB.AppEvents.logPageView();
+
+    fbStatus();
+    
+    function fbStatus(){
+        FB.getLoginStatus(function(response) {   // Called after the JS SDK has been initialized.
+        // console.log("LoginStatus",response);        // Returns the login status.
+        console.log("status:" + response.status);
+        document.getElementById("loginStatus").innerText = response.status;
+        if(response.status == "unknown"){
+            document.getElementById("loginName").innerText = "已登出..."
+        }
+    });
+    }
+
+    function fbLogin(){
+        FB.login(function(response) {
+            if (response.authResponse) {
+            console.log('Welcome!  Fetching your information.... ');
+            FB.api('/me?fields=id,name,email', function(response) {
+                console.log(response);
+                console.log('Good to see you, ' + response.name + '.');
+                // console.log('eMail, ' + response.email + '.');
+                document.getElementById("loginName").innerText = response.name + "," + response.email;
+            });
+            } else {
+            console.log('User cancelled login or did not fully authorize.');
+            document.getElementById("loginName").innerText = "狀態不明..."
+            }
+            fbStatus();
+        });
+    }
+
+    function fbLogout(){
+        FB.logout(function(response) {
+            // Person is now logged out
+            console.log("登出," , response);
+            fbStatus();
+        });
+    }
+    
+</script>
+</html>
